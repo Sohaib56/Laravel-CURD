@@ -17,7 +17,7 @@
             @foreach($products as $product)  
             <tr>
               <td>{{ $loop->index+1 }}</td>
-              <td>{{ $product->name }}</td>
+              <td><a class="text-dark" href="products/{{ $product->id }}/show">{{ $product->name }}</a></td>
               <td>
                 <img src="products/{{$product->image }}" class="rounded-circle" width="30" height="30" />
               </td>

@@ -31,6 +31,7 @@ Route::put('products/{id}/update',[ProductController::class,'update'])->name('pr
 
 Route::delete('/products/{id}/delete', [ProductController::class, 'delete'])->name('products.delete');
 
+Route::get('/products/{id}/show',[ProductController::class,'show'])->name('products.show');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
