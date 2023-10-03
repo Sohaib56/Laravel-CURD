@@ -19,7 +19,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard',[ProductController::class,'index'])->name('product.index');
+Route::get('/dashboard',[ProductController::class,'index'])->name('products.index');
+
+Route::get('products/create',[ProductController::class,'create'])->name('porducts.create');
+
+Route::post('products/store',[ProductController::class,'store'])->name('porducts.store');
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');

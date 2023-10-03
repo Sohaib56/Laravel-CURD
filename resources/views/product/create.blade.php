@@ -23,11 +23,29 @@
         </ul>
       </nav>
       
-    <div class="container">
-        <div class="my-2 text-right">
-            <a href="/products/create" class="btn btn-dark">New Products</a>
+    <div class="containe">
+      <div class="row justify-content-center">
+        <div class="col-sm-8">
+          <div class="card p-3 mt-3">
+                <form method="POST" action="/products/store" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                      <label >Name</label>
+                      <input type="text" name="name" class="form-control "/>
+                    </div>
+                    <div class="form-group">
+                      <label >Description</label>
+                      <textarea class="form-control" name="description"rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label >Image</label>
+                      <input type="file" name="image" class="form-control "/>
+                    </div>
+                    <button type="submit" class="btn btn-dark" >Submit</button>
+                </form>
+          </div>
         </div>
-        <h1>Products</h1>
+      </div>
     </div>
 </body>
 </html>
