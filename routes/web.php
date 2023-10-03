@@ -29,6 +29,9 @@ Route::get('products/{id}/edit',[ProductController::class,'edit'])->name('produc
 
 Route::put('products/{id}/update',[ProductController::class,'update'])->name('products.update');
 
+Route::delete('/products/{id}/delete', [ProductController::class, 'delete'])->name('products.delete');
+
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');

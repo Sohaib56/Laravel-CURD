@@ -63,4 +63,10 @@ class ProductController extends Controller
         return back()->withSuccess('Product Updated !!!');
 
     }
+
+    public function delete($id){
+        $product=Product::where('id',$id)->first();
+        $product->delete();
+        return back();
+    }
 }

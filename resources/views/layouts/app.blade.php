@@ -27,10 +27,9 @@
                 </header>
             @endif
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
         </div>
+        <main>
+            {{ $slot }}
+        </main>
     </body>
 </html>
