@@ -33,23 +33,24 @@
       <div class="row justify-content-center">
         <div class="col-sm-8">
           <div class="card p-3 mt-3">
-                <form method="POST" action="/products/store" enctype="multipart/form-data">
+                <form method="POST" action="/products/{{ $product->id }}/update" enctype="multipart/form-data">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                       <label >Name</label>
-                      <input type="text" name="name" class="form-control " value="{{ old('name') }}"/>
+                      <input type="text" name="name" class="form-control " value="{{ old('name',$product->name) }}"/>
                       @if($errors->has('name'))
                         <span class="text-danger">{{ $errors->first('name')}}</span>
                         @endif
                     </div>
                     <div class="form-group">
                       <label >Description</label>
-                      <textarea class="form-control" name="description"rows="4">{{ old('description') }}</textarea>
+                      <textarea class="form-control" name="description"rows="4">{{ old('description',$product->description),$product->description }}</textarea>
                       @if($errors->has('description'))
                       <span class="text-danger">{{ $errors->first('description')}}</span>
                       @endif
                     </div>
-                    <div class="form-group">
+                    <div class="form-group"> 
                       <label >Image</label>
                       <input type="file" name="image" class="form-control "/>
                       @if($errors->has('image'))

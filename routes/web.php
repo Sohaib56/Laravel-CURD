@@ -25,6 +25,10 @@ Route::get('products/create',[ProductController::class,'create'])->name('porduct
 
 Route::post('products/store',[ProductController::class,'store'])->name('porducts.store');
 
+Route::get('products/{id}/edit',[ProductController::class,'edit'])->name('products.edit');
+
+Route::put('products/{id}/update',[ProductController::class,'update'])->name('products.update');
+
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
