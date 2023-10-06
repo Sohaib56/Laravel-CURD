@@ -4,6 +4,8 @@
         <div class="my-2 text-right">
             <a href="/products/create" class="btn btn-dark">New Products</a>
         </div>
+
+        @if(count($products)>0)
         <table class="table table-hover mt-5">
           <thead>
             <tr>
@@ -34,5 +36,10 @@
             @endforeach
           </tbody>
         </table>
+        @else
+        <div class="container shadow p-5 m-3 rounded-lg">
+             <h3 class="text-inherit">Nothing To Show Please Add Products!!!</h3>
+        </div>
+        @endif
     </div>
 @endsection

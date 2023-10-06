@@ -19,28 +19,31 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard',[ProductController::class,'index'])->name('products.index');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('products/create',[ProductController::class,'create'])->name('porducts.create');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/index', [ProductController::class, 'index'])->name('products.index');
 
-Route::post('products/store',[ProductController::class,'store'])->name('porducts.store');
+    Route::get('products/create',[ProductController::class,'create'])->name('porducts.create');
+    
+    Route::post('products/store',[ProductController::class,'store'])->name('porducts.store');
+    
+    Route::get('products/{id}/edit',[ProductController::class,'edit'])->name('products.edit');
+    
+    Route::put('products/{id}/update',[ProductController::class,'update'])->name('products.update');
+    
+    Route::delete('/products/{id}/delete', [ProductController::class, 'delete'])->name('products.delete');
+    
+    Route::get('/products/{id}/show',[ProductController::class,'show'])->name('products.show');
 
-Route::get('products/{id}/edit',[ProductController::class,'edit'])->name('products.edit');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});    
 
-Route::put('products/{id}/update',[ProductController::class,'update'])->name('products.update');
 
-Route::delete('/products/{id}/delete', [ProductController::class, 'delete'])->name('products.delete');
 
-Route::get('/products/{id}/show',[ProductController::class,'show'])->name('products.show');
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
 
 require __DIR__.'/auth.php';

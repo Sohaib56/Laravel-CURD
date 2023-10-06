@@ -8,9 +8,15 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index(){
-        return  view('product.index',['products'=>Product::get()]);
-    }
+    // public function index(){
+    //     return  view('product.index',['products'=>Product::get()]);
+    // }
+
+public function index()
+{
+    $userProducts = Product::where('user_id', auth()->id())->get();
+    return view('product.index', ['products' => $userProducts]);
+}
 
     public function create(){
         return view('product.create');
@@ -29,11 +35,12 @@ class ProductController extends Controller
         $imageName=time().'.'.$request->image->extension();
         $request->image->move(public_path('products'),$imageName);
         $product=new Product;
+        $product->user_id = auth()->id();
         $product->image=$imageName;
         $product->name=$request->name;
         $product->description=$request->description;
         $product->save();
-        return back()->withSuccess('Product Created !!!');
+        return redirect()->route('products.index')->withSuccess('Product Created !!!');
 
     }
 
@@ -60,7 +67,7 @@ class ProductController extends Controller
         $product->name=$request->name;
         $product->description=$request->description;
         $product->save();
-        return back()->withSuccess('Product Updated !!!');
+        return redirect()->route('products.index')->withSuccess('Product Updated !!!');
 
     }
 

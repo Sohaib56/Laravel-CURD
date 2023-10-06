@@ -23,12 +23,23 @@
                       @endif
                     </div>
                     <div class="form-group"> 
-                      <label >Image</label>
-                      <input type="file" name="image" class="form-control "/>
+                      <label>Image</label>
+                      <input type="file" name="image" class="form-control"/>
                       @if($errors->has('image'))
-                      <span class="text-danger">{{ $errors->first('image')}}</span>
+                          <span class="text-danger">{{ $errors->first('image')}}</span>
                       @endif
-                    </div>
+                  
+                      @if(!empty($product->image))
+                          <div class="mt-2">
+                              <strong>Old Image Path:</strong> {{ $product->image }}
+                          </div>
+                      @else
+                          <div class="mt-2">
+                              <strong>Old Image Path:</strong> No old image available.
+                          </div>
+                      @endif
+                  </div>
+                  
                     <button type="submit" class="btn btn-dark" >Submit</button>
                 </form>
           </div>
