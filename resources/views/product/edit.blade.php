@@ -40,10 +40,15 @@
                       @endif
                   </div>
                   
-                    <button type="submit" class="btn btn-dark" >Submit</button>
+                    <button id="submitbtn" type="submit" class="btn btn-dark" >Submit</button>
                 </form>
           </div>
         </div>
       </div>
     </div>
 @endsection
+<style>
+  #submitbtn {
+     background-color: #343a40 !important;
+  }
+</style>
