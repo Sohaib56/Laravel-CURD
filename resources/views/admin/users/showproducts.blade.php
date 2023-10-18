@@ -32,6 +32,9 @@
 
     </div>
     <div class="container">
+      <div class="mt-3">
+        <a href="{{ route('admin.users.index') }}" class="btn btn-dark btn-small">User Index</a>
+    </div>
       <h1 id="userInfo">User Information:</h1>
       <table class="table table-hover mt-5">
         <thead>
