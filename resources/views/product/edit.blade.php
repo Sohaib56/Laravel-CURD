@@ -30,9 +30,12 @@
                       @endif
                   
                       @if(!empty($product->image))
-                          <div class="mt-2">
-                              <strong>Old Image Path:</strong> {{ $product->image }}
-                          </div>
+                      <div class="mt-2">
+                        <strong>Old Image:</strong>
+                        
+                        <img src="/products/{{ $product->image }}" alt="Old Image">
+                    </div>
+                    
                       @else
                           <div class="mt-2">
                               <strong>Old Image Path:</strong> No old image available.
